@@ -32,7 +32,7 @@
 
 * `UseCase / Interactor` - contains the application / business logic for a specific use case in your application
     * It is referenced by the `Presenter`. The `Presenter` can reference multiple `UseCases` since it's common to have multiple use cases on the same screen
-    * It manipulates `Entities` an communicates with `Gateways` to retrieve / persist the entities
+    * It manipulates `Entities` and communicates with `Gateways` to retrieve / persist the entities
     * The `Gateway` protocols should be defined in the `Application Logic` layers and implemented by the `Gateways & Framework Logic`
     * The separation described above ensures that the `Application Logic` depends on abstractions and not on actual frameworks / implementations
     * It should be covered by Unit Tests
