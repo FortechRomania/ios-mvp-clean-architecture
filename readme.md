@@ -3,6 +3,10 @@
 ### Description
 *Library* is an iOS application built to highlight __MVP (Model View Presenter)__ and __Clean Architecture__ concepts
 
+### Run Requirements
+
+* Xcode 8.2.1
+
 ### High Level Layers
 
 #### MVP Concepts
@@ -87,7 +91,7 @@ Discuss about all the design decision with your team members and make sure you a
 * [VIPER to be or not to be?](https://swifting.io/blog/2016/03/07/8-viper-to-be-or-not-to-be/?utm_source=swifting.io&utm_medium=web&utm_campaign=blog%20post)
 * [Effective Android Architecture](https://realm.io/news/360andev-richa-khandelwal-effective-android-architecture-patterns-java/) - our note here is that you should be careful about coupling you application to Rx* or any other framework for that matter. Please read [Make the Magic go away, by Uncle Bob](https://8thlight.com/blog/uncle-bob/2015/08/06/let-the-magic-die.html) and think twice before letting a framework take over your application.
 * [Improve your iOS Architecture with FlowControllers](http://merowing.info/2016/01/improve-your-ios-architecture-with-flowcontrollers/)
-* [GUI Architectures, by Martin Flower](https://martinfowler.com/eaaDev/uiArchs.html) 
+* [GUI Architectures, by Martin Fowler](https://martinfowler.com/eaaDev/uiArchs.html) 
 
 #### Clean Architecture
 * [The Clean Architecture, by Uncle Bob](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)
