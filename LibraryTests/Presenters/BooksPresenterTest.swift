@@ -184,7 +184,7 @@ class BooksPresenterTest: XCTestCase {
 		let books = Book.createBooksArray()
 		let bookToDelete = books[rowToDelete]
 		booksPresenter.books = books
-		deleteBookUseCaseSpy.resultToBeReturned = .success()
+		deleteBookUseCaseSpy.resultToBeReturned = .success(())
 		
 		// When
 		booksPresenter.deleteButtonPressed(row: rowToDelete)
@@ -200,7 +200,7 @@ class BooksPresenterTest: XCTestCase {
 		let rowToDelete = 1
 		let books = Book.createBooksArray()
 		booksPresenter.books = books
-		deleteBookUseCaseSpy.resultToBeReturned = .success()
+		deleteBookUseCaseSpy.resultToBeReturned = .success(())
 		deleteBookUseCaseSpy.callCompletionHandlerImmediate = false
 		
 		// When

@@ -47,11 +47,11 @@ class DeleteBookUseCaseTest: XCTestCase {
 	func test_delete_success_sends_notification_calls_completion_handler() {
 		// Given
 		let bookToDelete = Book.createBook()
-		let expectedResultToBeReturned: Result<Void> = Result.success()
+		let expectedResultToBeReturned: Result<Void> = Result.success(())
 		booksGatewaySpy.deleteBookResultToBeReturned = expectedResultToBeReturned
 		
 		let deleteBookCompletionHandlerExpectation = expectation(description: "Delete Book Expectation")
-		let _ = expectation(forNotification: DeleteBookUseCaseNotifications.didDeleteBook.rawValue, object: nil, handler: nil)
+		let _ = expectation(forNotification: NSNotification.Name(rawValue: DeleteBookUseCaseNotifications.didDeleteBook.rawValue), object: nil, handler: nil)
 		
 		// When
 		deleteBookUseCase.delete(book: bookToDelete) { (result) in

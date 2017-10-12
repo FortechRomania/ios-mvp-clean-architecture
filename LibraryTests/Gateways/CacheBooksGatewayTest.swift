@@ -140,7 +140,7 @@ class CacheBooksGatewayTest: XCTestCase {
 		// Given
 		let bookToDelete = Book.createBook()
 		let expectedResultToBeReturnedFromApi: Result<Void> = .failure(NSError.createError(withMessage: "Some error delete book"))
-		let expectedResultToBeReturnedFromLocalPersistence: Result<Void> = .success()
+		let expectedResultToBeReturnedFromLocalPersistence: Result<Void> = .success(())
 		apiBooksGatewaySpy.deleteBookResultToBeReturned = expectedResultToBeReturnedFromApi
 		localPersistenceBooksGatewaySpy.deleteBookResultToBeReturned = expectedResultToBeReturnedFromLocalPersistence
 		

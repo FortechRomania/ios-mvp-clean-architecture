@@ -74,7 +74,7 @@ class ApiBooksGatewayImplementation: ApiBooksGateway {
 		apiClient.execute(request: deleteBookApiRequest) { (result: Result<ApiResponse<VoidResponse>>) in
 			switch result {
 			case .success(_):
-				completionHandler(.success())
+                completionHandler(.success(()))
 			case let .failure(error):
 				completionHandler(.failure(error))
 			}
