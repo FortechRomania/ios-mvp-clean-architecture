@@ -154,7 +154,7 @@ class CoreDataBooksGatewayTest: XCTestCase {
 		
 		// When
 		inMemoryCoreDataBooksGateway.delete(book: addedBook1) { (result) in
-			XCTAssertEqual(result, Result<Void>.success(), "Expected a success result")
+			XCTAssertEqual(result, Result<Void>.success(()), "Expected a success result")
 			deleteBookCompletionHandlerExpectation.fulfill()
 		}
 		

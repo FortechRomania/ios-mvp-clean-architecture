@@ -36,7 +36,7 @@ extension CoreDataBook {
 		            isbn: isbn ?? "",
 		            title: title ?? "",
 		            author: author ?? "",
-		            releaseDate: releaseDate as? Date,
+		            releaseDate: releaseDate as Date?,
 		            pages: Int(pages))
 	}
 	

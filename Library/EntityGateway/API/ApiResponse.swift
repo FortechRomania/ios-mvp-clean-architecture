@@ -114,3 +114,13 @@ extension NSError {
 		               userInfo: [NSLocalizedDescriptionKey: "A parsing error occured"])
 	}
 }
+
+func dateFrom(_ stringValue: String?) -> Date? {
+    guard let value = stringValue else {
+        return nil
+    }
+    
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "yyyy-MM-dd"
+    return dateFormatter.date(from: value)
+}
