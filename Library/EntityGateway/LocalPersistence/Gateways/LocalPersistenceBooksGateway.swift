@@ -82,7 +82,7 @@ class CoreDataBooksGateway: LocalPersistenceBooksGateway {
 		
 		do {
 			try viewContext.save()
-			completionHandler(.success())
+			completionHandler(.success(()))
 		} catch {
 			completionHandler(.failure(CoreError(message: "Failed saving the context")))
 		}

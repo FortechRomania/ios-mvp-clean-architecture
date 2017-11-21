@@ -32,7 +32,7 @@ protocol ApiRequest {
 }
 
 protocol ApiClient {
-	func execute<T: InitializableWithData>(request: ApiRequest, completionHandler: @escaping (_ result: Result<ApiResponse<T>>) -> Void)
+	func execute<T>(request: ApiRequest, completionHandler: @escaping (_ result: Result<ApiResponse<T>>) -> Void)
 }
 
 protocol URLSessionProtocol {
@@ -55,7 +55,7 @@ class ApiClientImplementation: ApiClient {
 	
 	// MARK: - ApiClient
 	
-	func execute<T: InitializableWithData>(request: ApiRequest, completionHandler: @escaping (Result<ApiResponse<T>>) -> Void) {
+	func execute<T>(request: ApiRequest, completionHandler: @escaping (Result<ApiResponse<T>>) -> Void) {
 		let dataTask = urlSession.dataTask(with: request.urlRequest) { (data, response, error) in
 			guard let httpUrlResponse = response as? HTTPURLResponse else {
 				completionHandler(.failure(NetworkRequestError(error: error)))
