@@ -5,7 +5,8 @@
 
 ### Run Requirements
 
-* Xcode 9.1
+* Xcode 10
+* Swift 4.2
 
 ### High Level Layers
 
@@ -38,7 +39,7 @@
     * It should be covered by Unit Tests
 * `Entity` - plain `Swift` classes / structs
     * Models objects used by your application such as `Order`, `Product`, `Shopping Cart`, etc
-    
+
 ##### Gateways & Framework Logic
 
 * `Gateway` - contains actual implementation of the protocols defined in the `Application Logic` layer
@@ -47,7 +48,7 @@
     * We can implement for instance a `UserSettings` protocol using `UserDefaults`
     * It should be covered by Unit Tests
 * `Persistence / API Entities` - contains framework specific representations
-    * For instance we could have a `CoreDataOrder` that is a `NSManagedObject` subclass 
+    * For instance we could have a `CoreDataOrder` that is a `NSManagedObject` subclass
     * The `CoreDataOrder` would not be passed to the `Application Logic` layer but rather the `Gateways & Framework Logic` layer would have to "transform" it to an `Order` entity defined in the `Application Logic` layer
 * `Framework specific APIs` - contains implementations of `iOS` specific APIs such as sensors / bluetooth / camera
 
@@ -67,7 +68,7 @@
 
 ### Debatable Design Decisions
 
-Giving that a large majority of mobile apps are a thin client on top of a set of APIs and that most of them contain little business logic (since most of the business logic is found in the APIs) some of the `Clean Architecture` concepts can be debatable in the mobile world. Below you can find some: 
+Giving that a large majority of mobile apps are a thin client on top of a set of APIs and that most of them contain little business logic (since most of the business logic is found in the APIs) some of the `Clean Architecture` concepts can be debatable in the mobile world. Below you can find some:
 
 * Creating a representation for each layer (API, CoreData) might seem like over-engineering. If your application relies heavily on an API that is under your control then it might make sense to model both the entity and the API representation using the same class. You shouldn't however allow the persistence representation (the `NSManagedObject` subclass for instance) leak in the other layers (see [`Parse`](https://techcrunch.com/2016/01/28/facebook-shutters-its-parse-developer-platform/) example that got discontinued)
 * If you find that in most cases your `Use Cases / Interactors` simply delegate the actions to the `Gateway` then maybe you don't need the `Use Cases / Interactors` in the first place and you can use the `Gateway` directly in the `Presenter`
@@ -91,7 +92,7 @@ Discuss about all the design decision with your team members and make sure you a
 * [VIPER to be or not to be?](https://swifting.io/blog/2016/03/07/8-viper-to-be-or-not-to-be/?utm_source=swifting.io&utm_medium=web&utm_campaign=blog%20post)
 * [Effective Android Architecture](https://realm.io/news/360andev-richa-khandelwal-effective-android-architecture-patterns-java/) - our note here is that you should be careful about coupling you application to Rx* or any other framework for that matter. Please read [Make the Magic go away, by Uncle Bob](https://8thlight.com/blog/uncle-bob/2015/08/06/let-the-magic-die.html) and think twice before letting a framework take over your application.
 * [Improve your iOS Architecture with FlowControllers](http://merowing.info/2016/01/improve-your-ios-architecture-with-flowcontrollers/)
-* [GUI Architectures, by Martin Fowler](https://martinfowler.com/eaaDev/uiArchs.html) 
+* [GUI Architectures, by Martin Fowler](https://martinfowler.com/eaaDev/uiArchs.html)
 
 #### Clean Architecture
 * [The Clean Architecture, by Uncle Bob](https://8thlight.com/blog/uncle-bob/2012/08/13/the-clean-architecture.html)
