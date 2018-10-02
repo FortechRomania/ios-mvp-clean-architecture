@@ -73,13 +73,13 @@ class BooksTableViewController: UITableViewController, BooksView {
 	                        titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
 		return presenter.titleForDeleteButton(row: indexPath.row)
 	}
-    
-    override func tableView(_ tableView: UITableView,
-                            commit editingStyle: UITableViewCell.EditingStyle,
-                            forRowAt indexPath: IndexPath) {
-        presenter.deleteButtonPressed(row: indexPath.row)
-    }
-    
+	
+	override func tableView(_ tableView: UITableView,
+	                        commit editingStyle: UITableViewCellEditingStyle,
+	                        forRowAt indexPath: IndexPath) {
+		presenter.deleteButtonPressed(row: indexPath.row)
+	}
+	
 	// MARK: - BooksView
 	
 	func refreshBooksView() {
