@@ -75,7 +75,7 @@ class BooksTableViewController: UITableViewController, BooksView {
 	}
 	
 	override func tableView(_ tableView: UITableView,
-	                        commit editingStyle: UITableViewCellEditingStyle,
+	                        commit editingStyle: UITableViewCell.EditingStyle,
 	                        forRowAt indexPath: IndexPath) {
 		presenter.deleteButtonPressed(row: indexPath.row)
 	}
