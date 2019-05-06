@@ -5,8 +5,8 @@
 
 ### Run Requirements
 
-* Xcode 10
-* Swift 4.2
+* Xcode 10.2.1
+* Swift 5
 
 ### High Level Layers
 

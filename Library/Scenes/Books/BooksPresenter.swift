@@ -176,7 +176,7 @@ class BooksPresenterImplementation: BooksPresenter, AddBookPresenterDelegate {
 	
 	fileprivate func handleBookDeleted(book: Book) {
 		// The book might have already be deleted due to the notification response
-		if let row = books.index(of: book) {
+                if let row = books.firstIndex(of: book) {
 			books.remove(at: row)
 			view?.deleteAnimated(row: row)
 		}
