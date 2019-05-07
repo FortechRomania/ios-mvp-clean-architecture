@@ -37,7 +37,7 @@ public extension Dictionary where Key: ExpressibleByStringLiteral, Value: Any  {
 	
 	- returns: `Data` containing the serialized JSON or empty `Data` (e.g. `Data()`) if the serialization fails
 	*/
-	public func toJsonData() -> Data {
+        func toJsonData() -> Data {
 		do {
 			return try JSONSerialization.data(withJSONObject: self, options: [])
 		} catch {
@@ -55,7 +55,7 @@ public extension Array where Element: Any {
 	
 	- returns: `Data` containing the serialized JSON or empty `Data` (e.g. `Data()`) if the serialization fails
 	*/
-	public func toJsonData() -> Data {
+        func toJsonData() -> Data {
 		do {
 			return try JSONSerialization.data(withJSONObject: self, options: [])
 		} catch {
