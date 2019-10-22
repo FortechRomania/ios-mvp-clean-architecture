@@ -49,7 +49,7 @@ class ApiClientTest: XCTestCase {
 		
 		// Normally to mock JSON responses you should use a Dictionary and convert it to JSON using JSONSerialization.data
 		// In our example here we don't care about the actual JSON, we care about the data regardless of its format it would have
-		let expectedUtf8StringResponse = "{ \"SomeProperty\" : \"SomeValue\" }"
+		let expectedUtf8StringResponse = "{\"SomeProperty\":\"SomeValue\"}"
 		let expectedData = expectedUtf8StringResponse.data(using: .utf8)
 		let expected2xxReponse = HTTPURLResponse(statusCode: 200)
 		
@@ -167,18 +167,19 @@ private struct TestDoubleRequest: ApiRequest {
 	}
 }
 
-private struct TestDoubleApiEntity: InitializableWithData {
-	var utf8String: String
-	
-	init(data: Data?) throws {
-		utf8String = String(data: data!, encoding: .utf8)!
-	}
+private struct TestDoubleApiEntity: Codable {
+      var SomeProperty: String
+        
+      var utf8String: String {
+              let data = try? JSONEncoder().encode(self)
+              return String(data: data!, encoding: .utf8)!
+      }
 }
 
-private struct TestDoubleErrorParseApiEntity: InitializableWithData {
-	init(data: Data?) throws {
-		throw NSError.createPraseError()
-	}
+private struct TestDoubleErrorParseApiEntity: Decodable {
+      init(from decoder: Decoder) throws {
+              throw NSError.createPraseError()
+      }
 }
 
 
