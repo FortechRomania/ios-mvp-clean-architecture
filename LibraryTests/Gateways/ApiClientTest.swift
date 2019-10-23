@@ -60,7 +60,7 @@ class ApiClientTest: XCTestCase {
 		// When
 		apiClient.execute(request: TestDoubleRequest()) { (result: Result<ApiResponse<TestDoubleApiEntity>>) in
 			// Then
-			guard let response = try? result.dematerialize() else {
+			guard let response = try? result.get() else {
 				XCTFail("A successfull response should've been returned")
 				return
 			}
@@ -89,7 +89,7 @@ class ApiClientTest: XCTestCase {
 		apiClient.execute(request: TestDoubleRequest()) { (result: Result<ApiResponse<TestDoubleErrorParseApiEntity>>) in
 			// Then
 			do {
-				let _ = try result.dematerialize()
+				let _ = try result.get()
 				XCTFail("Expected parse error to be thrown")
 			} catch let error as ApiParseError {
 				XCTAssertTrue(expected2xxReponse === error.httpUrlResponse, "The http response is not the expected one")
@@ -118,7 +118,7 @@ class ApiClientTest: XCTestCase {
 		apiClient.execute(request: TestDoubleRequest()) { (result: Result<ApiResponse<TestDoubleApiEntity>>) in
 			// Then
 			do {
-				let _ = try result.dematerialize()
+				let _ = try result.get()
 				XCTFail("Expected api error to be thrown")
 			} catch let error as ApiError {
 				XCTAssertTrue(expected4xxReponse === error.httpUrlResponse, "The http response is not the expected one")
@@ -146,7 +146,7 @@ class ApiClientTest: XCTestCase {
 		apiClient.execute(request: TestDoubleRequest()) { (result: Result<ApiResponse<TestDoubleApiEntity>>) in
 			// Then
 			do {
-				let _ = try result.dematerialize()
+				let _ = try result.get()
 				XCTFail("Expected network error to be thrown")
 			} catch let error as NetworkRequestError {
 				XCTAssertEqual(expectedErrorMessage, error.localizedDescription, "Error message doesn't match")
