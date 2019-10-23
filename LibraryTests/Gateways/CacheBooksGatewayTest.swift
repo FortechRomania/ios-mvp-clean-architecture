@@ -57,7 +57,7 @@ class CacheBooksGatewayTest: XCTestCase {
 		// When
 		cacheBooksGateway.fetchBooks { (result) in
 			// Then
-			XCTAssertEqual(expectedResultToBeReturned, result, "The expected result wasn't returned")
+                      XCTAssertTrue(expectedResultToBeReturned == result, "The expected result wasn't returned")
 			XCTAssertEqual(booksToReturn, self.localPersistenceBooksGatewaySpy.booksSaved, "The books weren't saved on the local persistence")
 			
 			fetchBooksCompletionHandlerExpectation.fulfill()
@@ -80,7 +80,7 @@ class CacheBooksGatewayTest: XCTestCase {
 		// When
 		cacheBooksGateway.fetchBooks { (result) in
 			// Then
-			XCTAssertEqual(expectedResultToBeReturnedFromLocalPersistence, result, "The expected result wasn't returned")
+                      XCTAssertTrue(expectedResultToBeReturnedFromLocalPersistence == result, "The expected result wasn't returned")
 			XCTAssertTrue(self.localPersistenceBooksGatewaySpy.fetchBooksCalled, "Fetch books wasn't called on the local persistence")
 			
 			fetchBooksCompletionHandlerExpectation.fulfill()
@@ -101,7 +101,7 @@ class CacheBooksGatewayTest: XCTestCase {
 		// When
 		cacheBooksGateway.add(parameters: addBookParameters) { (result) in
 			// Then
-			XCTAssertEqual(expectedResultToBeReturned, result, "The expected result wasn't returned")
+                      XCTAssertTrue(expectedResultToBeReturned == result, "The expected result wasn't returned")
 			XCTAssertEqual(addBookParameters, self.apiBooksGatewaySpy.addBookParameters, "Add book parameters passed to API mismatch")
 			XCTAssertEqual(bookToAdd, self.localPersistenceBooksGatewaySpy.addedBook, "The added book wasn't passed to the local persistence")
 			
@@ -126,7 +126,7 @@ class CacheBooksGatewayTest: XCTestCase {
 		// When
 		cacheBooksGateway.add(parameters: addBookParameters) { (result) in
 			// Then
-			XCTAssertEqual(expectedResultToBeReturnedFromLocalPersistence, result, "The expected result wasn't returned")
+                      XCTAssertTrue(expectedResultToBeReturnedFromLocalPersistence == result, "The expected result wasn't returned")
 			XCTAssertEqual(addBookParameters, self.apiBooksGatewaySpy.addBookParameters, "Add book parameters passed to API mismatch")
 			XCTAssertEqual(addBookParameters, self.localPersistenceBooksGatewaySpy.addBookParameters, "Add book parameters passed to local persistence mismatch")
 			
@@ -148,7 +148,7 @@ class CacheBooksGatewayTest: XCTestCase {
 		
 		// When
 		cacheBooksGateway.delete(book: bookToDelete) { (result) in
-			XCTAssertEqual(expectedResultToBeReturnedFromLocalPersistence, result, "The expected result wasn't returned")
+                      XCTAssertTrue(expectedResultToBeReturnedFromLocalPersistence == result, "The expected result wasn't returned")
 			XCTAssertEqual(bookToDelete, self.apiBooksGatewaySpy.deletedBook, "Book to delete wasn't passed to the API")
 			XCTAssertEqual(bookToDelete, self.localPersistenceBooksGatewaySpy.deletedBook, "Book to delete wasn't passed to the local persistence")
 			deleteBookCompletionHandlerExpectation.fulfill()

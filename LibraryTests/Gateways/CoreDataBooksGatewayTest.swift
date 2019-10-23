@@ -60,7 +60,7 @@ class CoreDataBooksGatewayTest: XCTestCase {
 		// When
 		inMemoryCoreDataBooksGateway.add(parameters: addBookParameters) { (result) in
 			// Then
-			guard let book = try? result.dematerialize() else {
+			guard let book = try? result.get() else {
 				XCTFail("Should've saved the book with success")
 				return
 			}
@@ -84,7 +84,7 @@ class CoreDataBooksGatewayTest: XCTestCase {
 		// When
 		errorPathCoreDataBooksGateway.fetchBooks { (result) in
 			// Then
-			XCTAssertEqual(expectedResultToBeReturned, result, "Failure error wasn't returned")
+                      XCTAssertTrue(expectedResultToBeReturned == result, "Failure error wasn't returned")
 			fetchBooksCompletionHandlerExpectation.fulfill()
 		}
 		
@@ -101,7 +101,7 @@ class CoreDataBooksGatewayTest: XCTestCase {
 		// When
 		errorPathCoreDataBooksGateway.add(parameters: AddBookParameters.createParameters()) { (result) in
 			// Then
-			XCTAssertEqual(expectedResultToBeReturned, result, "Failure error wasn't returned")
+                      XCTAssertTrue(expectedResultToBeReturned == result, "Failure error wasn't returned")
 			addBookCompletionHandlerExpectation.fulfill()
 		}
 		
@@ -120,7 +120,7 @@ class CoreDataBooksGatewayTest: XCTestCase {
 		// When
 		errorPathCoreDataBooksGateway.add(parameters: AddBookParameters.createParameters()) { (result) in
 			// Then
-			XCTAssertEqual(expectedResultToBeReturned, result, "Failure error wasn't returned")
+                      XCTAssertTrue(expectedResultToBeReturned == result, "Failure error wasn't returned")
 			XCTAssertTrue(self.managedObjectContextSpy.deletedObject! === addedCoreDataBook, "The inserted entity should've been deleted")
 			addBookCompletionHandlerExpectation.fulfill()
 		}
@@ -134,7 +134,7 @@ class CoreDataBooksGatewayTest: XCTestCase {
 		var addedBook1: Book!
 		let addBook1CompletionHandlerExpectation = expectation(description: "Add book completion handler expectation")
 		inMemoryCoreDataBooksGateway.add(parameters: addBookParameters1) { (result) in
-			addedBook1 = try! result.dematerialize()
+			addedBook1 = try! result.get()
 			addBook1CompletionHandlerExpectation.fulfill()
 		}
 		waitForExpectations(timeout: 1, handler: nil)
@@ -144,7 +144,7 @@ class CoreDataBooksGatewayTest: XCTestCase {
 		let addBook2CompletionHandlerExpectation = expectation(description: "Add book completion handler expectation")
 		
 		inMemoryCoreDataBooksGateway.add(parameters: addBookParameters2) { (result) in
-			addedBook2 = try! result.dematerialize()
+			addedBook2 = try! result.get()
 			addBook2CompletionHandlerExpectation.fulfill()
 		}
 		
@@ -154,7 +154,7 @@ class CoreDataBooksGatewayTest: XCTestCase {
 		
 		// When
 		inMemoryCoreDataBooksGateway.delete(book: addedBook1) { (result) in
-			XCTAssertEqual(result, Result<Void>.success(()), "Expected a success result")
+                      XCTAssertTrue(result == Result<Void>.success(()), "Expected a success result")
 			deleteBookCompletionHandlerExpectation.fulfill()
 		}
 		
@@ -163,7 +163,7 @@ class CoreDataBooksGatewayTest: XCTestCase {
 		// Then
 		let fetchBooksCompletionHandlerExpectation = expectation(description: "Fetch books completion handler expectation")
 		inMemoryCoreDataBooksGateway.fetchBooks { (result) in
-			let books = try! result.dematerialize()
+			let books = try! result.get()
 			XCTAssertFalse(books.contains(addedBook1), "The added book should've been deleted")
 			XCTAssertTrue(books.contains(addedBook2), "The second book should be contained")
 			fetchBooksCompletionHandlerExpectation.fulfill()
@@ -183,7 +183,7 @@ class CoreDataBooksGatewayTest: XCTestCase {
 		// When
 		errorPathCoreDataBooksGateway.delete(book: bookToDelete) { (result) in
 			// Then
-			XCTAssertEqual(expectedResultToBeReturned, result, "Failure error wasn't returned")
+                      XCTAssertTrue(expectedResultToBeReturned == result, "Failure error wasn't returned")
 			deleteBookCompletionHandlerExpectation.fulfill()
 		}
 		
@@ -202,7 +202,7 @@ class CoreDataBooksGatewayTest: XCTestCase {
 		// When
 		errorPathCoreDataBooksGateway.delete(book: bookToDelete) { (result) in
 			// Then
-			XCTAssertEqual(expectedResultToBeReturned, result, "Failure error wasn't returned")
+                      XCTAssertTrue(expectedResultToBeReturned == result, "Failure error wasn't returned")
 			deleteBookCompletionHandlerExpectation.fulfill()
 		}
 		
@@ -224,7 +224,7 @@ fileprivate func Assert(book: Book, builtFromParameters parameters: AddBookParam
 
 fileprivate func Assert(book: Book, wasAddedIn coreDataBooksGateway: CoreDataBooksGateway, expectation: XCTestExpectation) {
 	coreDataBooksGateway.fetchBooks { (result) in
-		guard let books = try? result.dematerialize() else {
+		guard let books = try? result.get() else {
 			XCTFail("Should've fetched the books with success")
 			return
 		}

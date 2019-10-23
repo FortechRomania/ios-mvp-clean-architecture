@@ -56,7 +56,7 @@ class DeleteBookUseCaseTest: XCTestCase {
 		// When
 		deleteBookUseCase.delete(book: bookToDelete) { (result) in
 			// Then
-			XCTAssertEqual(expectedResultToBeReturned, result, "Completion handler didn't return the expected result")
+                      XCTAssertTrue(expectedResultToBeReturned == result, "Completion handler didn't return the expected result")
 			XCTAssertEqual(bookToDelete, self.booksGatewaySpy.deletedBook, "Incorrect book passed to the gateway")
 			deleteBookCompletionHandlerExpectation.fulfill()
 		}
@@ -75,7 +75,7 @@ class DeleteBookUseCaseTest: XCTestCase {
 		// When
 		deleteBookUseCase.delete(book: bookToDelete) { (result) in
 			// Then
-			XCTAssertEqual(expectedResultToBeReturned, result, "Completion handler didn't return the expected result")
+                      XCTAssertTrue(expectedResultToBeReturned == result, "Completion handler didn't return the expected result")
 			XCTAssertEqual(bookToDelete, self.booksGatewaySpy.deletedBook, "Incorrect book passed to the gateway")
 			deleteBookCompletionHandlerExpectation.fulfill()
 		}
