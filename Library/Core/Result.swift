@@ -28,11 +28,11 @@
 import Foundation
 
 struct CoreError: Error {
-	var localizedDescription: String {
-		return message
-	}
-	
-	var message = ""
+    var localizedDescription: String {
+        return message
+    }
+    
+    var message = ""
 }
 
 typealias Result<T> = Swift.Result<T, Error>

@@ -29,9 +29,9 @@ import Foundation
 @testable import Library
 
 class AddBookViewRouterSpy: AddBookViewRouter {
-	var didCallDismiss = false
-	
-	func dismiss() {
-		didCallDismiss = true
-	}
+    var didCallDismiss = false
+    
+    func dismiss() {
+        didCallDismiss = true
+    }
 }

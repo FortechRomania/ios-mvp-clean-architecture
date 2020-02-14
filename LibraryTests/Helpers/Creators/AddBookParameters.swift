@@ -29,13 +29,13 @@ import Foundation
 @testable import Library
 
 extension AddBookParameters {
-	static func createParameters() -> AddBookParameters {
-		return AddBookParameters(isbn: "isbn", title: "title", author: "author", releaseDate: Date(), pages: 0)
-	}
+    static func createParameters() -> AddBookParameters {
+        return AddBookParameters(isbn: "isbn", title: "title", author: "author", releaseDate: Date(), pages: 0)
+    }
 }
 
 extension AddBookParameters: Equatable { }
 
 public func == (lhs: AddBookParameters, rhs: AddBookParameters) -> Bool {
-	return lhs.isbn == rhs.isbn && lhs.title == rhs.title && lhs.author == rhs.author && lhs.releaseDate == rhs.releaseDate && lhs.pages == rhs.pages
+    return lhs.isbn == rhs.isbn && lhs.title == rhs.title && lhs.author == rhs.author && lhs.releaseDate == rhs.releaseDate && lhs.pages == rhs.pages
 }
