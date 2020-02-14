@@ -29,6 +29,6 @@ import Foundation
 @testable import Library
 
 public func ==<T>(lhs: Result<T>, rhs: Result<T>) -> Bool {
-	// Shouldn't be used for PRODUCTION enum comparison. Good enough for unit tests.
-	return String(describing: lhs) == String(describing: rhs)
+    // Shouldn't be used for PRODUCTION enum comparison. Good enough for unit tests.
+    return String(describing: lhs) == String(describing: rhs)
 }

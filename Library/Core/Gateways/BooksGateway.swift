@@ -33,7 +33,7 @@ typealias DeleteBookEntityGatewayCompletionHandler = (_ books: Result<Void>) -> 
 
 
 protocol BooksGateway {
-	func fetchBooks(completionHandler: @escaping FetchBooksEntityGatewayCompletionHandler)
-	func add(parameters: AddBookParameters, completionHandler: @escaping AddBookEntityGatewayCompletionHandler)
-	func delete(book: Book, completionHandler: @escaping DeleteBookEntityGatewayCompletionHandler)
+    func fetchBooks(completionHandler: @escaping FetchBooksEntityGatewayCompletionHandler)
+    func add(parameters: AddBookParameters, completionHandler: @escaping AddBookEntityGatewayCompletionHandler)
+    func delete(book: Book, completionHandler: @escaping DeleteBookEntityGatewayCompletionHandler)
 }

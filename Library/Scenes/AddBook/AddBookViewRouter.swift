@@ -28,19 +28,19 @@
 import Foundation
 
 protocol AddBookViewRouter: ViewRouter {
-	func dismiss()
+    func dismiss()
 }
 
 class AddBookViewRouterImplementation: AddBookViewRouter {
-	fileprivate weak var addBookViewController: AddBookViewController?
-	
-	init(addBookViewController: AddBookViewController) {
-		self.addBookViewController = addBookViewController
-	}
-	
-	// MARK: - AddBookRouter
-	
-	func dismiss() {
-		addBookViewController?.dismiss(animated: true, completion: nil)
-	}
+    fileprivate weak var addBookViewController: AddBookViewController?
+    
+    init(addBookViewController: AddBookViewController) {
+        self.addBookViewController = addBookViewController
+    }
+    
+    // MARK: - AddBookRouter
+    
+    func dismiss() {
+        addBookViewController?.dismiss(animated: true, completion: nil)
+    }
 }

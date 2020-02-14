@@ -29,19 +29,19 @@ import Foundation
 @testable import Library
 
 class BookCellViewSpy: BookCellView {
-	var displayedTitle = ""
-	var displayedAuthor = ""
-	var displayedReleaseDate = ""
-	
-	func display(title: String) {
-		displayedTitle = title
-	}
-	
-	func display(author: String) {
-		displayedAuthor = author
-	}
-	
-	func display(releaseDate: String) {
-		displayedReleaseDate = releaseDate
-	}
+    var displayedTitle = ""
+    var displayedAuthor = ""
+    var displayedReleaseDate = ""
+    
+    func display(title: String) {
+        displayedTitle = title
+    }
+    
+    func display(author: String) {
+        displayedAuthor = author
+    }
+    
+    func display(releaseDate: String) {
+        displayedReleaseDate = releaseDate
+    }
 }

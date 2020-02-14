@@ -30,30 +30,30 @@ import Foundation
 // If your company develops the API then it's relatively safe to have a single representation
 // for both the API entities and your core entities. So depending on the complexity of your app this entity might be an overkill
 struct ApiBook: Decodable {
-      var id: String
-      var isbn: String
-      var title: String
-      var author: String
-      var releaseDate: Date?
-      var pages: Int
+    var id: String
+    var isbn: String
+    var title: String
+    var author: String
+    var releaseDate: Date?
+    var pages: Int
     
-      enum CodingKeys: String, CodingKey {
-            case id = "Id"
-            case isbn = "ISBN"
-            case title = "Title"
-            case author = "Author"
-            case releaseDate = "Pages"
-            case pages = "ReleaseDate"
-      }
+    enum CodingKeys: String, CodingKey {
+        case id = "Id"
+        case isbn = "ISBN"
+        case title = "Title"
+        case author = "Author"
+        case releaseDate = "Pages"
+        case pages = "ReleaseDate"
+    }
 }
 
 extension ApiBook {
-	var book: Book {
-		return Book(id: id,
-		            isbn: isbn,
-		            title: title,
-		            author: author,
-		            releaseDate: releaseDate,
-		            pages: pages)
-	}
+    var book: Book {
+        return Book(id: id,
+                    isbn: isbn,
+                    title: title,
+                    author: author,
+                    releaseDate: releaseDate,
+                    pages: pages)
+    }
 }

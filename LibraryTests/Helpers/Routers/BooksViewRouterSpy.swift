@@ -29,14 +29,14 @@ import Foundation
 @testable import Library
 
 class BooksViewRouterSpy: BooksViewRouter {
-	var passedBook: Book?
-	var passedAddBookPresenterDelegate: AddBookPresenterDelegate?
-	
-	func presentDetailsView(for book: Book) {
-		passedBook = book
-	}
-	
-	func presentAddBook(addBookPresenterDelegate: AddBookPresenterDelegate) {
-		passedAddBookPresenterDelegate = addBookPresenterDelegate
-	}
+    var passedBook: Book?
+    var passedAddBookPresenterDelegate: AddBookPresenterDelegate?
+    
+    func presentDetailsView(for book: Book) {
+        passedBook = book
+    }
+    
+    func presentAddBook(addBookPresenterDelegate: AddBookPresenterDelegate) {
+        passedAddBookPresenterDelegate = addBookPresenterDelegate
+    }
 }

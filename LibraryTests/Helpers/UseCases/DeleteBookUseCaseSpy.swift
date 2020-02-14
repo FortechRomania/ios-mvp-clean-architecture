@@ -29,22 +29,22 @@ import Foundation
 @testable import Library
 
 class DeleteBookUseCaseSpy: DeleteBookUseCase {
-	var resultToBeReturned: Result<Void>!
-	var callCompletionHandlerImmediate = true
-	var bookToDelete: Book?
-	
-	private var completionHandler: DeleteBookUseCaseCompletionHandler?
-	
-	func delete(book: Book, completionHandler: @escaping (Result<Void>) -> Void) {
-		bookToDelete = book
-		self.completionHandler = completionHandler
-		
-		if callCompletionHandlerImmediate {
-			callCompletionHandler()
-		}
-	}
-	
-	func callCompletionHandler() {
-		self.completionHandler?(resultToBeReturned)
-	}
+    var resultToBeReturned: Result<Void>!
+    var callCompletionHandlerImmediate = true
+    var bookToDelete: Book?
+    
+    private var completionHandler: DeleteBookUseCaseCompletionHandler?
+    
+    func delete(book: Book, completionHandler: @escaping (Result<Void>) -> Void) {
+        bookToDelete = book
+        self.completionHandler = completionHandler
+        
+        if callCompletionHandlerImmediate {
+            callCompletionHandler()
+        }
+    }
+    
+    func callCompletionHandler() {
+        self.completionHandler?(resultToBeReturned)
+    }
 }

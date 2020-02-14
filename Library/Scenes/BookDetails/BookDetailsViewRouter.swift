@@ -28,17 +28,17 @@
 import Foundation
 
 protocol BookDetailsViewRouter: ViewRouter {
-	func dismissView()
+    func dismissView()
 }
 
 class BookDetailsViewRouterImplementation: BookDetailsViewRouter {
-	fileprivate weak var bookDetailsTableViewController: BookDetailsTableViewController?
-	
-	init(bookDetailsTableViewController: BookDetailsTableViewController) {
-		self.bookDetailsTableViewController = bookDetailsTableViewController
-	}
-	
-	func dismissView() {
-		let _ = bookDetailsTableViewController?.navigationController?.popViewController(animated: true)
-	}
+    fileprivate weak var bookDetailsTableViewController: BookDetailsTableViewController?
+    
+    init(bookDetailsTableViewController: BookDetailsTableViewController) {
+        self.bookDetailsTableViewController = bookDetailsTableViewController
+    }
+    
+    func dismissView() {
+        let _ = bookDetailsTableViewController?.navigationController?.popViewController(animated: true)
+    }
 }

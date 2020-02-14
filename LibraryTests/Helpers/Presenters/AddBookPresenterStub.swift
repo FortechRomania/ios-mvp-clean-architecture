@@ -29,15 +29,15 @@ import Foundation
 @testable import Library
 
 class AddBookPresenterStub: AddBookPresenter {
-	var router: AddBookViewRouter
-	
-	init (router: AddBookViewRouter) {
-		self.router = router
-	}
-	
-	var maximumReleaseDate = Date()
-	
-	func addButtonPressed(parameters: AddBookParameters) { }
-	
-	func cancelButtonPressed() { }
+    var router: AddBookViewRouter
+    
+    init (router: AddBookViewRouter) {
+        self.router = router
+    }
+    
+    var maximumReleaseDate = Date()
+    
+    func addButtonPressed(parameters: AddBookParameters) { }
+    
+    func cancelButtonPressed() { }
 }

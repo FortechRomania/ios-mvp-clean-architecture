@@ -28,7 +28,7 @@
 import UIKit
 
 extension UITextField {
-	var textOrEmptyString: String {
-		return text ?? ""
-	}
+    var textOrEmptyString: String {
+        return text ?? ""
+    }
 }
